@@ -1,1 +1,16 @@
-<h1>編集画面です</h1>
+<h1>User Info</h1>
+<%= form_with model:@user, local:true do |f| %>
+  <label for="name">Name</label><br>
+  <%= f.text_field :name, autofocus: true, id:"name" %>
+  <br>
+
+  <label for="image">Image</label><br>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  <br>
+
+  <label for="introduction">Introduction</label><br>
+  <%= f.text_field :introduction, autofocus: true, id:"introduction" %>
+  <br>
+
+  <%= f.submit "Update User" %>
+<% end %>
