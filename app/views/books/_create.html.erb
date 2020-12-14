@@ -1,0 +1,18 @@
+<h1>New Book</h1>
+<%= form_with model: book, local:true do |f| %>
+  <div class="input-group mb-3 mt-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+    </div>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :opinion %><br />
+    <%= f.text_area :opinion, class:"form-control", rows:"2" %>
+  </div>
+  <br>
+  <%= f.submit 'Create Book', class:"btn btn-lg btn-block btn-info mt-4" %>
+<% end %>

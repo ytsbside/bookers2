@@ -1,0 +1,13 @@
+<h1>User Info</h1>
+<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+<table border="1" width="500" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="center" nowrap>name</td>
+    <td valign="top"><%= user.name %></td>
+  </tr>
+  <tr>
+    <td align="center" nowrap>introduction</td>
+    <td valign="top"><%= user.introduction %></td>
+  </tr>
+</table>
+<p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
