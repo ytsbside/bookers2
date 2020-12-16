@@ -1,16 +1,30 @@
-<h1>User Info</h1>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="name">Name</label><br>
-  <%= f.text_field :name, autofocus: true, id:"name" %>
-  <br>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h2>User Info</h2>
+      <% if @user.errors.any? %>
+        <h3 id="error_message"><%= @user.errors.count %>件のerrorが発生しました</h3>
+        <% @user.errors.full_messages.each do |message| %><br>
+          <p id="error_message"><span>・</span><%= message %></p>
+        <% end %>
+      <% end %>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+          <label for="name">Name</label><br>
+          <%= f.text_field :name, autofocus: true, id:"name", class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label><br>
+          <%= f.attachment_field :profile_image %>
+        </div>
 
-  <label for="image">Image</label><br>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  <br>
+        <div class="form-group">
+          <label for="introduction">Introduction</label><br>
+          <%= f.text_field :introduction, autofocus: true, id:"introduction", class:"form-control" %>
+        </div>
 
-  <label for="introduction">Introduction</label><br>
-  <%= f.text_field :introduction, autofocus: true, id:"introduction" %>
-  <br>
-
-  <%= f.submit "Update User" %>
-<% end %>
+        <%= f.submit "Update User", class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
