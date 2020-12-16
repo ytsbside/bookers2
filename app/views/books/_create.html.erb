@@ -1,18 +1,21 @@
-<h1>New Book</h1>
+<h2>New Book</h2>
+<!--エラーメッセージ-->
+<% if book.errors.any? %>
+  <h3 id="error_message"><%= book.errors.count %>件のerrorが発生しました</h3>
+  <% book.errors.full_messages.each do |message| %><br>
+    <p id="error_message"><span>・</span><%= message %></p>
+  <% end %>
+<% end %>
+
 <%= form_with model: book, local:true do |f| %>
-  <div class="input-group mb-3 mt-4">
-    <div class="input-group-prepend">
-      <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
-    </div>
-    <div class="field">
+    <div class="form-group">
       <%= f.label :title %><br />
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class:"form-control" %>
     </div>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :opinion %><br />
-    <%= f.text_area :opinion, class:"form-control", rows:"2" %>
+    <%= f.text_area :body, class:"form-control", rows:"2" %>
   </div>
   <br>
-  <%= f.submit 'Create Book', class:"btn btn-lg btn-block btn-info mt-4" %>
+  <%= f.submit 'Create Book', class:"btn btn-success" %>
 <% end %>
