@@ -1,5 +1,20 @@
-<h3>welcome to Bookers !!</h3>
-<h4>in Bookers</h4>
-<p>you can share and exchange your opinions , inpressions , and emotions about various books!</p>
+<div class="container">
+  <% if flash[:notice] %>
+    <div id="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+    <div class="row">
+      <div class="mx-auto">
+        <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong> !!</h1>
+        <p>in<strong>Bookers</strong><i class="fas fa-book"></i></p>
+        <p>you can share and exchange your opinions , inpressions , and emotions</p>
+        <p>about various books!</p>
+        <div class="col-10 mx-auto">
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-block btn-sm btn-info mb-3" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-block btn-sm btn-success" %>
+        </div>
+      </div>
+    </div>
+</div>
 
-<p>CopyRight Infratop.inc</p>
