@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :user_own, only: [:edit, :update]
+
   def index
     @users = User.all
     @user = current_user
@@ -25,7 +27,14 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
+
+  def user_own
+    if current_user != User.find(params[:id])
+      redirect_to user_path(current_user)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
